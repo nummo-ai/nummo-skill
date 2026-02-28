@@ -40,7 +40,7 @@ echo "Installing nummo $VERSION..."
 
 # Download binary
 BINARY="nummo-$OS-$ARCH"
-URL="https://github.com/$REPO/releases/download/$VERSION/$BINARY"
+URL="https://github.com/$SKILL_REPO/releases/download/$VERSION/$BINARY"
 
 TMP=$(mktemp)
 curl -fsSL "$URL" -o "$TMP"
