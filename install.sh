@@ -2,6 +2,7 @@
 set -e
 
 REPO="nummo-ai/nummo-banking"
+SKILL_REPO="nummo-ai/nummo-skill"
 BIN_DIR="/usr/local/bin"
 SKILL_DIR="$HOME/.openclaw/skills/nummo"
 
@@ -26,9 +27,9 @@ case "$OS" in
     ;;
 esac
 
-# Get latest release version
+# Get latest release version from public skill repo
 echo "Fetching latest release..."
-VERSION=$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" | grep '"tag_name"' | sed 's/.*"tag_name": *"\([^"]*\)".*/\1/')
+VERSION=$(curl -fsSL "https://raw.githubusercontent.com/$SKILL_REPO/main/version.txt" | tr -d '[:space:]')
 
 if [ -z "$VERSION" ]; then
   echo "Failed to fetch latest version"
@@ -54,7 +55,7 @@ fi
 
 # Install SKILL.md
 mkdir -p "$SKILL_DIR"
-curl -fsSL "https://raw.githubusercontent.com/$REPO/main/SKILL.md" -o "$SKILL_DIR/SKILL.md"
+curl -fsSL "https://raw.githubusercontent.com/$SKILL_REPO/main/SKILL.md" -o "$SKILL_DIR/SKILL.md"
 
 echo ""
 echo "nummo $VERSION installed successfully!"
