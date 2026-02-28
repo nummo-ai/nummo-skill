@@ -64,7 +64,5 @@ Informs the user how to cancel their subscription.
 
 - Always ask for permission before calling any tool. This skills gives you read access to financial data, and you must get explicit consent from the user.
 - If no date range is mentioned, use the command defaults — don't ask the user for dates.
-- Prefer `summary` for broad questions, `txs` for specific lookups or drill-downs.
+- Use `summary` by default, especially for broad questions. Reserve `txs` for specific lookups or drill-downs.
 - When a command returns a URL (connect, checkout, change), always present it clearly and tell the user to open it in their browser.
-- Summarize financial output in natural language — don't dump raw CLI output at the user.
-- If `auth status` shows the session is expiring soon, suggest the user run `nummo auth signup <email>` to renew.
